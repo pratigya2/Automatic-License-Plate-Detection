@@ -1,0 +1,12 @@
+{% extends "home/base.html" %}
+{% block content %}
+<link rel="stylesheet" href="https://cdn.plyr.io/3.6.4/plyr.css" />
+<video id = "player" controls>
+  <source src="media/output(2).mp4" for=""></output>" type='video/mp4'>
+  Your browser does not support the video tag.
+</video>
+<script src="https://cdn.plyr.io/3.6.4/plyr.js"></script>
+<script>
+  const player = new Plyr('#player');
+</script>
+{% endblock content %}

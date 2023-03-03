@@ -1,0 +1,57 @@
+{% extends "home/base.html" %}
+{% block content %}
+<header>
+    <h1 class= "title">AUTOMATIC LICENSE PLATE DETECTION</h1>
+</header>
+<div class="owl-carousel owl-theme mt-5">
+    <div class="owl-item">
+        <div class="card">
+            <div class="img-card">
+                <img src="static/image2.jpg"
+                    alt="">
+            </div>
+            <div class="testimonial mt-4 mb-2">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus expedita dicta doloremque odit
+                saepe quo natus aut accusantium alias blanditiis.
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="img-card">
+            <img src="static/image2.jpg"
+                alt="">
+        </div>
+        <div class="testimonial mt-4 mb-2">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus expedita dicta doloremque odit
+            saepe quo natus aut accusantium alias blanditiis.
+        </div>
+    </div>
+</div>
+<a href = "upload"><button type="button" class = "but">Get Started</button></a>
+<script>
+    $(document).ready(function () {
+    var silder = $(".owl-carousel");
+    silder.owlCarousel({
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: false,
+        items: 1,
+        stagePadding: 20,
+        center: true,
+        nav: false,
+        margin: 50,
+        dots: true,
+        loop: true,
+        responsive: {
+            0: { items: 1 },
+            480: { items: 2 },
+            575: { items: 2 },
+            768: { items: 2 },
+            991: { items: 3 },
+            1200: { items: 4 }
+        }
+    });
+});
+</script>
+
+{% endblock content%}
