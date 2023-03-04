@@ -3,11 +3,14 @@ from django.http import HttpResponse,JsonResponse,StreamingHttpResponse
 from .forms import UploadForm
 from .models import Upload
 from .video import *
+from .detect import *
 import time
 x = None
 y = "hello"
 count = 1
 # Create your views here.
+DetectionModel = Detector('home\static\yolov5s-best.pt','home\static\yolov5s-character.pt')
+
 def upload(request):
     global x
     global new
@@ -23,6 +26,7 @@ def upload(request):
             video_generate(x,output_file,new)
             count += 1
             print(count)
+            DetectionModel.infer_video(x)
             endtime = time.time()
             print(endtime-starttime)
             return JsonResponse({'message':'yes'})
