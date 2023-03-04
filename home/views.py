@@ -6,16 +6,23 @@ from .video import *
 import time
 x = None
 y = "hello"
+count = 1
 # Create your views here.
 def upload(request):
     global x
+    global new
+    global count
     form = UploadForm(data=request.POST, files=request.FILES)
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         if form.is_valid():
             instance = form.save()
             x = instance.video.path
             starttime = time.time()
-            video_generate(x)
+            output_file = 'media/' +str(count)+ '.mp4'
+            new = 'media/' + str(count)+'(2)'+'.mp4'
+            video_generate(x,output_file,new)
+            count += 1
+            print(count)
             endtime = time.time()
             print(endtime-starttime)
             return JsonResponse({'message':'yes'})
@@ -25,8 +32,8 @@ def testimonals(request):
     return render(request,'home/testimonal.html')
 def result(request):
     path = str(x)
-    print(output_file)
-    return render(request,'home/results.html')
+    print(new)
+    return render(request,'home/results.html',{'new':new})
 
 
 

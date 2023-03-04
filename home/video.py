@@ -12,7 +12,6 @@ import cv2
 import time
 import numpy as np
 frames = []
-output_file = 'media/output.mp4'
 # class VideoStream:
 #     def __init__(self, video_file):
 #         self.cap = cv2.VideoCapture(video_file)
@@ -69,24 +68,22 @@ def video_read(x):
             break
     vid.release()
 
-def video_generate(x):
+def video_generate(x,output_file,new):
     print("x")
     video_read(x)
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     out = cv2.VideoWriter(output_file, fourcc, fps, (int(width), int(height)))
     for frame in frames:
         out.write(frame)
-
     # Release the VideoWriter object and close the output file
     out.release()
     startime = time.time()
-    stream = ffmpeg.input('media/output.mp4')
+    stream = ffmpeg.input(output_file)
     print("hello")
 #      stream = ffmpeg.hflip(stream)
-    stream = ffmpeg.output(stream, 'media/output(2).mp4')
+    stream = ffmpeg.output(stream, new)
     ffmpeg.run(stream)
     endtime = time.time()
-    print(startime-endtime)
     # ffmpeg.('ffmpeg -i media/output.mp4 -vcodec libx264 -f mp4 media/output(2).mp4')
     # with open(output_file, 'rb') as video_file:
     #     response = HttpResponse(video_file.read(), content_type='video/mp4')

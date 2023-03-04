@@ -41,6 +41,7 @@ input.addEventListener('change',()=>{
                     $('#loading').show();
                     $("label[for = 'id_video']").text("Wait for some time")
                     $("#spinner").hide()
+                    $(".btn").hide()
                 }
                 else{
                     $('#loading').hide(); 
@@ -67,7 +68,7 @@ input.addEventListener('change',()=>{
           $("#loading").hide()
           $("label[for = 'id_video']").text(x)
           cancelBox.remove()
-          uploadBox.add()
+          $(".btn").show()
 
         },
         error:function(error){
