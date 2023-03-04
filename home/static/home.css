@@ -126,7 +126,7 @@ section .row{
 .owl-carousel .owl-item .card {
     margin-top: 60px;
     padding: 30px;
-    height: 500px;
+    height: 420px;
     position: relative;
     color: #101c81;
     border : thick;
@@ -153,6 +153,7 @@ section .row{
     color: #101c81;
     font-size: 1.1rem;
     font-weight: 600;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color: aquamarine;
     padding: 0.3rem 0.4rem;
     border-radius: 5px;
@@ -204,7 +205,7 @@ section .row{
     }
 }
 .but{
-    margin-top: 320px;
+    margin-top: 350px;
     align-items: center;
     margin-left: auto;
     left: 50%;
@@ -236,4 +237,38 @@ section .row{
 video {
     width: 50%;
     height: auto;
+  }
+#loading {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#loading::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    border-top-color: #333;
+    animation: spin 1s linear infinite;
   }

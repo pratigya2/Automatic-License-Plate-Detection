@@ -9,6 +9,7 @@ const cancelBtn = document.getElementById('cancel-btn')
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
 const collection = document.getElementsByClassName("wrapper");
 
+$('#loading').hide();
 input.addEventListener('change',()=>{
     progressBox.classList.remove('not-visible')
     cancelBox.classList.remove('not-visible')
@@ -36,9 +37,16 @@ input.addEventListener('change',()=>{
                     <div class="progress">
                     <div class="progress-bar" role="progressbar" style="width:${percent}%; background-color:#2cd735;": ${percent}%" aria-valuenow="${percent}" aria-valuemin="0" aria-valuemax="100" "style:" color":green"></div>
                 </div>`
+                if (percent == 100){
+                    $('#loading').show();
+                    $("label[for = 'id_video']").text("Wait for some time")
+                    $("#spinner").hide()
                 }
-
-            })
+                else{
+                    $('#loading').hide(); 
+                }
+            }
+            });
             cancelBtn.addEventListener('click',()=>{
                 xhr.abort()
                 setTimeout(()=>{
@@ -46,6 +54,7 @@ input.addEventListener('change',()=>{
                 },2000)
                 alertBox.innerHTML=""
                 progressBox.innerHTML = ""
+                $('#loading').hide(); 
                 cancelBox.classList.remove('not-visible')
             })
             return xhr
@@ -55,7 +64,8 @@ input.addEventListener('change',()=>{
             Video Uploaded Successfully
           </div>`
           var x = document.getElementById('id_video').files[0].name;
-          $("label[for = 'id_video']").text(x) 
+          $("#loading").hide()
+          $("label[for = 'id_video']").text(x)
           cancelBox.remove()
           uploadBox.add()
 
