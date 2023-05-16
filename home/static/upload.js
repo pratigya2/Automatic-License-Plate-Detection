@@ -39,7 +39,7 @@ input.addEventListener('change',()=>{
                 </div>`
                 if (percent == 100){
                     $('#loading').show();
-                    $("label[for = 'id_video']").text("Wait for some time")
+                    $("label[for = 'id_video']").text("Upload Complete!!!\nInferencing")
                     $("#spinner").hide()
                     $(".btn").hide()
                 }
@@ -62,7 +62,7 @@ input.addEventListener('change',()=>{
         },
         success: function(response){
             alertBox.innerHTML = `<div class="alert alert-success" role="alert">
-            Video Uploaded Successfully
+            Uploaded Successfully
           </div>`
           var x = document.getElementById('id_video').files[0].name;
           $("#loading").hide()
